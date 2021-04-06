@@ -23,8 +23,14 @@ const root = {
   getAbout: () => {
     return { message: 'Hello World' }
 },
-        getmeal: () =>{
-            return { description: 'Noodles'}
+        getmeal: ({ time }) =>{
+            const allMeals = {
+                breakfast: 'toast',
+                lunch: 'noodles',
+                dinner: 'pizza'
+            }
+            const meal = allMeals[time]
+            return { description: meal}
         }
 }
 

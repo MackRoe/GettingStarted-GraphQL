@@ -13,6 +13,11 @@ type Meal {
     description: String!
 }
 
+type Pet {
+    name: String!
+    species: String!
+}
+
 enum MealTime {
     breakfast
     lunch
@@ -22,6 +27,8 @@ enum MealTime {
 type Query {
   getAbout: About
     getmeal(time: String!): Meal
+  getPet(id: Int!): Pet # Add a query to get a single pet
+  allPets: [Pet!]!      # Returns an array of type Pet
 }`)
 
 // Define a resolver

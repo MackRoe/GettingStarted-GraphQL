@@ -9,15 +9,23 @@ type About {
   message: String!
 }
 
+type Meal {
+    description: String!
+}
+
 type Query {
   getAbout: About
+    getmeal: Meal
 }`)
 
 // Define a resolver
 const root = {
   getAbout: () => {
     return { message: 'Hello World' }
-  }
+},
+        getmeal: () =>{
+            return { description: 'Noodles'}
+        }
 }
 
 // Create an express app

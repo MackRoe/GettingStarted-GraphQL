@@ -30,34 +30,34 @@ type Query {
   getPet(id: Int!): Pet # Add a query to get a single pet
   allPets: [Pet!]!      # Returns an array of type Pet
 }`)
-
+// Define list of pets
+const petList = [
+    { name: 'Fluffy', species: 'Dog' },
+    { name: 'Sassy', species: 'Cat' },
+    { name: 'Goldberg', species: 'Frog' }
+]
 // Define a resolver
 const root = {
-  getAbout: () => {
-    return { message: 'Hello World' }
-},
-        getmeal: ({ time }) =>{
-            const allMeals = {
-                breakfast: 'toast',
-                lunch: 'noodles',
-                dinner: 'pizza'
-            }
-            const meal = allMeals[time]
-            return { description: meal}
+    getAbout: () => {
+        return { message: 'Hello World' }
+    },
+    getmeal: ({ time }) =>{
+        const allMeals = {
+            breakfast: 'toast',
+            lunch: 'noodles',
+            dinner: 'pizza'
         }
-
+        const meal = allMeals[time]
+        return { description: meal}
+    },
+    getPet: ({ id }) => {
         // Mock datatbase in this case:
-        const petList = [
-        	{ name: 'Fluffy', species: 'Dog' },
-        	{ name: 'Sassy', species: 'Cat' },
-        	{ name: 'Goldberg', species: 'Frog' }
-        ]
-        getPet: ({ id }) => {
-            return petList[id]
-        },
-        allPets: ()=> {
-            return petList
-        },
+
+        return petList[id]
+    },
+    allPets: ()=> {
+        return petList
+    },
 }
 
 // Create an express app

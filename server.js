@@ -15,7 +15,7 @@ type Meal {
 
 type Query {
   getAbout: About
-    getmeal: Meal
+    getmeal(time: String!): Meal
 }`)
 
 // Define a resolver

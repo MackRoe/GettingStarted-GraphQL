@@ -12,3 +12,10 @@ type About {
 type Query {
   getAbout: About
 }`)
+
+// Define a resolver
+const root = {
+  getAbout: () => {
+    return { message: 'Hello World' }
+  }
+}

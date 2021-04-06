@@ -13,6 +13,12 @@ type Meal {
     description: String!
 }
 
+enum MealTime {
+    breakfast
+    lunch
+    dinner
+}
+
 type Query {
   getAbout: About
     getmeal(time: String!): Meal

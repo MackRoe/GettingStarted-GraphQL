@@ -32,9 +32,9 @@ type Query {
 }`)
 // Define list of pets
 const petList = [
-    { name: 'Fluffy', species: 'Dog' },
-    { name: 'Sassy', species: 'Cat' },
-    { name: 'Goldberg', species: 'Frog' }
+    { name: 'Fluffy', species: 'Dog', age: 0 },
+    { name: 'Sassy', species: 'Cat', age: 3 },
+    { name: 'Goldberg', species: 'Frog', age: 1 }
 ]
 // Define a resolver
 const root = {

@@ -45,6 +45,19 @@ const root = {
             const meal = allMeals[time]
             return { description: meal}
         }
+
+        // Mock datatbase in this case:
+        const petList = [
+        	{ name: 'Fluffy', species: 'Dog' },
+        	{ name: 'Sassy', species: 'Cat' },
+        	{ name: 'Goldberg', species: 'Frog' }
+        ]
+        getPet: ({ id }) => {
+            return petList[id]
+        },
+        allPets: ()=> {
+            return petList
+        },
 }
 
 // Create an express app

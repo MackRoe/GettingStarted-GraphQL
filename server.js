@@ -3,7 +3,7 @@ const express = require('express')
 const { graphqlHTTP } = require('express-graphql')
 const { buildSchema } = require('graphql')
 
-// Create a schema
+// SCHEMA
 const schema = buildSchema(`
 type About {
   message: String!
@@ -13,9 +13,17 @@ type Meal {
     description: String!
 }
 
+enum Species {
+    Cat
+    Dog
+    Frog
+    Fish
+    Snake
+}
+
 type Pet {
     name: String!
-    species: String!
+    species: Species!
 }
 
 enum MealTime {
@@ -51,8 +59,6 @@ const root = {
         return { description: meal}
     },
     getPet: ({ id }) => {
-        // Mock datatbase in this case:
-
         return petList[id]
     },
     allPets: ()=> {

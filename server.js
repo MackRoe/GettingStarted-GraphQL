@@ -37,6 +37,8 @@ type Query {
     getmeal(time: String!): Meal
   getPet(id: Int!): Pet # Add a query to get a single pet
   allPets: [Pet!]!      # Returns an array of type Pet
+  firstPet: Pet     # Returns first pet in array
+  lastPet: Pet     # Returns last pet in array
 }`)
 // Define list of pets
 const petList = [
@@ -44,7 +46,7 @@ const petList = [
     { name: 'Sassy', species: 'Cat', age: 3 },
     { name: 'Goldberg', species: 'Frog', age: 1 }
 ]
-// Define a resolver
+// RESOLVER
 const root = {
     getAbout: () => {
         return { message: 'Hello World' }
@@ -64,6 +66,13 @@ const root = {
     allPets: ()=> {
         return petList
     },
+    firstPet: ({ id = 0 }) => {
+        return petList[id]
+    },
+    lastPet: ({ id = (petList.length - 1)}) => {
+        return petList[id]
+    }
+
 }
 
 // Create an express app

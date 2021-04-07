@@ -37,9 +37,6 @@ type Time {
     minute: Int!
     second: Int!
 }
-type Random {
-    number: Int!
-}
 
 type Query {
   getAbout: About
@@ -49,7 +46,7 @@ type Query {
   firstPet: Pet     # Returns first pet in array
   lastPet: Pet     # Returns last pet in array
   getTime: Time     # Returns current time
-  getRandom: Random  # Returns a random number in specified range
+  getRandom(range: Int!): Int  # Returns a random number in specified range
 
 }`)
 // Define list of pets
@@ -60,8 +57,9 @@ const petList = [
 ]
 
 // Set up Random
-randomLimit = 100
-const randomNumber = Math.floor(Math.random() * randomLimit)
+function randomNumber(range){
+    return Math.floor(Math.random() * range)
+}
 
 
 // RESOLVER
@@ -98,7 +96,7 @@ const root = {
         return { hour: hourNow, minute: minuteNow, second: secondNow}
     },
     getRandom: ({ range }) => {
-        return randomNumber
+        return randomNumber(range)
     }
 
 }

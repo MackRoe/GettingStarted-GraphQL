@@ -37,6 +37,9 @@ type Time {
     minute: Int!
     second: Int!
 }
+type Random {
+    number: Int!
+}
 
 type Query {
   getAbout: About
@@ -46,6 +49,8 @@ type Query {
   firstPet: Pet     # Returns first pet in array
   lastPet: Pet     # Returns last pet in array
   getTime: Time     # Returns current time
+  getRandom: Random  # Returns a random number in specified range
+
 }`)
 // Define list of pets
 const petList = [
@@ -54,7 +59,10 @@ const petList = [
     { name: 'Goldberg', species: 'Frog', age: 1 }
 ]
 
-let currentTime = { hour: 12, minute: 30, second: 11}
+// Set up Random
+randomLimit = 100
+const randomNumber = Math.floor(Math.random() * randomLimit)
+
 
 // RESOLVER
 const root = {
@@ -83,7 +91,14 @@ const root = {
         return petList[id]
     },
     getTime: () => {
-        return currentTime
+        const now = new Date(Date.now())
+        const hourNow = now.getHours()
+        const minuteNow = now.getMinutes()
+        const secondNow = now.getSeconds()
+        return { hour: hourNow, minute: minuteNow, second: secondNow}
+    },
+    getRandom: ({ range }) => {
+        return randomNumber
     }
 
 }

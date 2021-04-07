@@ -32,6 +32,12 @@ enum MealTime {
     dinner
 }
 
+type Time {
+    hour: Int!
+    minute: Int!
+    second: Int!
+}
+
 type Query {
   getAbout: About
     getmeal(time: String!): Meal
@@ -39,6 +45,7 @@ type Query {
   allPets: [Pet!]!      # Returns an array of type Pet
   firstPet: Pet     # Returns first pet in array
   lastPet: Pet     # Returns last pet in array
+  getTime: Time     # Returns current time
 }`)
 // Define list of pets
 const petList = [
@@ -46,6 +53,9 @@ const petList = [
     { name: 'Sassy', species: 'Cat', age: 3 },
     { name: 'Goldberg', species: 'Frog', age: 1 }
 ]
+
+let currentTime = { hour: 12, minute: 30, second: 11}
+
 // RESOLVER
 const root = {
     getAbout: () => {
@@ -71,6 +81,9 @@ const root = {
     },
     lastPet: ({ id = (petList.length - 1)}) => {
         return petList[id]
+    },
+    getTime: () => {
+        return currentTime
     }
 
 }

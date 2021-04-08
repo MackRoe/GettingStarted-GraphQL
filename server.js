@@ -24,6 +24,7 @@ enum Species {
 type Pet {
     name: String!
     species: Species!
+    total: Int!
 }
 
 enum MealTime {
@@ -54,6 +55,7 @@ type Query {
   getTime: Time     # Returns current time
   getRandom(range: Int!): Int  # Returns a random number in specified range
   getRoll(sides: Int!, rolls: Int!): Roll
+  petCount: Pet
 }`)
 // Define list of pets
 const petList = [
@@ -93,6 +95,10 @@ const root = {
     },
     lastPet: ({ id = (petList.length - 1)}) => {
         return petList[id]
+    },
+    petCount: () => {
+        const count = petList.length
+        return { total: count}
     },
     getTime: () => {
         const now = new Date(Date.now())

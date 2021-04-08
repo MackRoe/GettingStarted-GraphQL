@@ -38,6 +38,12 @@ type Time {
     second: Int!
 }
 
+type Roll {
+    total: Int!
+    sides: Int!
+    rolls: [Int!]!
+}
+
 type Query {
   getAbout: About
     getmeal(time: String!): Meal
@@ -47,7 +53,7 @@ type Query {
   lastPet: Pet     # Returns last pet in array
   getTime: Time     # Returns current time
   getRandom(range: Int!): Int  # Returns a random number in specified range
-
+  getRoll(sides: Int!, rolls: Int!): Roll
 }`)
 // Define list of pets
 const petList = [
@@ -97,6 +103,19 @@ const root = {
     },
     getRandom: ({ range }) => {
         return randomNumber(range)
+    },
+    getRoll: ({ sides, rolls }) => {
+        var i;
+        var rollsTotal = 0
+        var rollList = []
+        for (i = 0; i < rolls; i++)
+        {
+            let oneRoll = (randomNumber(sides)+1);
+            rollList.push(oneRoll)
+            rollsTotal = rollsTotal + oneRoll
+        }
+        return { total: rollsTotal, sides, rolls: rollList}
+
     }
 
 }

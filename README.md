@@ -17,3 +17,61 @@
 Queries are added on the left and the data returned appears on the right. To send a query, click the run [>] button.
 
 ## The Queries
+
+- [x] *functional*
+
+`{
+  allPets {
+    name
+  }
+}`
+
+
+`{
+  getPet(index: 0) {
+    name
+  }
+}`
+
+
+`{
+  getTime {
+    hour
+    second
+    minute
+  }
+}`
+
+
+`{
+  getRandom(range: 100)
+}`
+
+
+`{
+  petCount {
+    total
+  }
+}`
+
+- [ ] *not functional*
+
+`{
+  petsInRange(start: 0, count: 2) {
+    name
+  }
+}`
+
+
+`{
+  getPetBySpecies(species: "Cat") {
+    name
+  }
+}`
+
+
+`{
+  allSpecies {
+    name
+  }
+}`

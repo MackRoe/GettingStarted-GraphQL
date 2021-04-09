@@ -61,14 +61,15 @@ Queries are added on the left and the data returned appears on the right. To sen
   }
 }`
 
-<!-- - [ ] *not functional*
+
 `{
+  # species can be "Cat" or "Dog"
   getPetBySpecies(species: "Cat") {
     name
   }
 }`
 
-
+<!-- - [ ] *not functional*
 `{
   allSpecies {
     name

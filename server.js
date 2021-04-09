@@ -57,6 +57,7 @@ type Query {
   getRoll(sides: Int!, rolls: Int!): Roll
   petCount: Pet
   petsInRange(start: Int!, count: Int!): [Pet]
+  getPetBySpecies(species: String!): [Pet]
 }`)
 // Define list of pets
 const petList = [
@@ -124,6 +125,14 @@ const root = {
         //         }
         //     }
         // }
+    },
+    getPetBySpecies: ({ species }) => {
+        const specifiedSpeciesList = []
+        for (let i = 0; i < petList.length -1; i++)
+            if (petList[i].species === species) {
+                specifiedSpeciesList.push(petList[i])
+            }
+        return specifiedSpeciesList
     },
     getTime: () => {
         const now = new Date(Date.now())

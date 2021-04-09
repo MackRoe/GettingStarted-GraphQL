@@ -63,7 +63,6 @@ Queries are added on the left and the data returned appears on the right. To sen
 
 
 `{
-  # species can be "Cat" or "Dog"
   getPetBySpecies(species: "Cat") {
     name
   }

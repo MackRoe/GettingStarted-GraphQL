@@ -58,6 +58,7 @@ type Query {
   petCount: Pet
   petsInRange(start: Int!, count: Int!): [Pet]
   getPetBySpecies(species: String!): [Pet]
+  allSpecies: [Pet]
 }`)
 // Define list of pets
 const petList = [
@@ -133,6 +134,14 @@ const root = {
                 specifiedSpeciesList.push(petList[i])
             }
         return specifiedSpeciesList
+    },
+    allSpecies: () => {
+        const speciesList = []
+        for (let i =0; i < petList.length -1; i++) {
+            console.log('species: ', petList.species)
+            speciesList.push(petList.species)
+        }
+        return speciesList
     },
     getTime: () => {
         const now = new Date(Date.now())

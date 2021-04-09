@@ -56,6 +56,7 @@ type Query {
   getRandom(range: Int!): Int  # Returns a random number in specified range
   getRoll(sides: Int!, rolls: Int!): Roll
   petCount: Pet
+  petsInRange(start: Int!, count: Int!): [Pet]
 }`)
 // Define list of pets
 const petList = [
@@ -100,6 +101,30 @@ const root = {
         const count = petList.length
         return { total: count}
     },
+    petsInRange: ({ start, count }) => {
+        const rangedArray = []
+        if ((start + count) < petList.length) {
+            // # accumulate array
+
+            const limit = start + count
+            console.log('start: ', start, 'count: ', count)
+            for (let i = start; i < limit; i++) {
+                console.log(petList[i])
+                // get pet name at specified indexes
+                rangedArray.push(petList[i])
+            }
+        }
+        return rangedArray
+        //  else {
+        //     // # error message
+        //     console.log("Range requested exceeds index range.")
+        //     return {
+        //         error: {
+        //             message: "Range requested exceeds index range. Use petCount query to see acceptable range."
+        //         }
+        //     }
+        // }
+    },
     getTime: () => {
         const now = new Date(Date.now())
         const hourNow = now.getHours()
@@ -121,7 +146,6 @@ const root = {
             rollsTotal = rollsTotal + oneRoll
         }
         return { total: rollsTotal, sides, rolls: rollList}
-
     }
 
 }

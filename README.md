@@ -54,7 +54,6 @@ Queries are added on the left and the data returned appears on the right. To sen
   }
 }`
 
-- [ ] *not functional*
 
 `{
   petsInRange(start: 0, count: 2) {
@@ -62,7 +61,7 @@ Queries are added on the left and the data returned appears on the right. To sen
   }
 }`
 
-
+<!-- - [ ] *not functional*
 `{
   getPetBySpecies(species: "Cat") {
     name
@@ -74,4 +73,4 @@ Queries are added on the left and the data returned appears on the right. To sen
   allSpecies {
     name
   }
-}`
+}` -->

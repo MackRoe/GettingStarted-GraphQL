@@ -45,6 +45,10 @@ type Roll {
     rolls: [Int!]!
 }
 
+type Mutation {
+    addPet(name: String!, species: String!): Pet!
+}
+
 type Query {
   getAbout: About
     getmeal(time: String!): Meal
@@ -117,15 +121,7 @@ const root = {
             }
         }
         return rangedArray
-        //  else {
-        //     // # error message
-        //     console.log("Range requested exceeds index range.")
-        //     return {
-        //         error: {
-        //             message: "Range requested exceeds index range. Use petCount query to see acceptable range."
-        //         }
-        //     }
-        // }
+
     },
     getPetBySpecies: ({ species }) => {
         const specifiedSpeciesList = []
@@ -142,6 +138,11 @@ const root = {
             speciesList.push(petList.species)
         }
         return speciesList
+    },
+    addPet: ({ name, species }) => {
+        const pet = { name, species}
+        petList.push(pet)
+        return pet
     },
     getTime: () => {
         const now = new Date(Date.now())

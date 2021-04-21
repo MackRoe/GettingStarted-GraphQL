@@ -48,6 +48,7 @@ type Roll {
 type Mutation {
     addPet(name: String!, species: String!): Pet!
     updatePet(id: Int!, name: String, species: String): Pet
+    deletePet(id: Int!): Pet
 }
 
 type Query {
@@ -156,6 +157,11 @@ const root = {
 		pet.species = species || pet.species
 		return pet
 	},
+    deletePet: ({ id }) => {
+        deletedPet = petList[id]
+        petList.pop(deletedPet)
+        return deletedPet
+    },
     getTime: () => {
         const now = new Date(Date.now())
         const hourNow = now.getHours()

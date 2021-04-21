@@ -54,7 +54,6 @@ Queries are added on the left and the data returned appears on the right. To sen
   }
 }`
 
-
 `{
   petsInRange(start: 0, count: 2) {
     name
@@ -68,9 +67,38 @@ Queries are added on the left and the data returned appears on the right. To sen
   }
 }`
 
-<!-- - [ ] *not functional*
 `{
   allSpecies {
     name
   }
-}` -->
+}`
+
+## The Mutations (CRUD)
+
+- Create:
+
+`mutation {
+    addPet(name, species) {
+        name
+    }
+ }`
+
+ - Read: Use getPet(id) query
+
+
+- Update
+
+
+ `mutation {
+     updatePet(id, name, species) {
+         name
+     }
+  }`
+
+- Delete
+
+`mutation {
+  deletePet(id: 1) {
+    name
+  }
+}`

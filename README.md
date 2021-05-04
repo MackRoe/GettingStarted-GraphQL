@@ -9,7 +9,7 @@
 2. In terminal/shell, enter: `git clone git@github.com:MackRoe/GettingStarted-GraphQL.git`
 
 3. Then, still in terminal, do: `npm install` to install the needed node modules.
-4. To run the app, enter: `npm start` and navigate to `localhost:4000` in your browser.
+4. To run the app, enter: `npm start` and navigate to `localhost:4000/graphql` in your browser.
 
 ## The UI
 ![The User Interface](UserInterface.png)
@@ -83,7 +83,7 @@ Queries are added on the left and the data returned appears on the right. To sen
     }
  }`
 
- - Read: Use getPet(id) query
+ - Read: *Use `getPet` query*
 
 
 - Update
